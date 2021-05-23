@@ -15,6 +15,9 @@ public class JsonUtil {
 
     /**
      * 将任意对象转换为String类型
+     *
+     * @param obj java对象
+     * @return json字符串
      */
     public static String toStr(Object obj) {
         // toJSONString的时候，默认如果重用对象的话，会使用引用的方式进行引用对象
@@ -24,7 +27,13 @@ public class JsonUtil {
 
     /**
      * 将字符串按照指定类型，转换为对象
+     * <p>
      * 注意：对象的属性，需要有set方法；否则，赋值不会成功
+     *
+     * @param json  json字符串
+     * @param clazz 要转换的java类
+     * @param <T>   要转换的java类
+     * @return 要转换的java对象
      */
     public static <T> T toObj(String json, Class<T> clazz) {
         return JSON.parseObject(json, clazz);
@@ -32,28 +41,33 @@ public class JsonUtil {
 
     /**
      * 将字符串转换为列表
+     *
+     * @param json  json字符串
+     * @param clazz 要转换的java类
+     * @param <T>   要转换的java类
+     * @return 要转换的java对象列表
      */
     public static <T> List<T> toList(String json, Class<T> clazz) {
         return JSON.parseArray(json, clazz);
     }
 
     /**
-     * 将对象转换为列表
-     */
-    public static <T> List<T> toList(Object obj, Class<T> clazz) {
-        String json = JSON.toJSONString(obj);
-        return JSON.parseArray(json, clazz);
-    }
-
-    /**
-     * 将字符串转换为Map<String, Object>
+     * 将字符串转换为 map
+     *
+     * @param json json字符串
+     * @return map
      */
     public static Map toMap(String json) {
         return JSON.parseObject(json, Map.class);
     }
 
     /**
-     * 将字符串转换为Map<String, Class>
+     * 将字符串转换为 map
+     *
+     * @param json  json字符串
+     * @param clazz 要转换的java类
+     * @param <T>   要转换的java类
+     * @return map
      */
     public static <T> Map<String, T> toMap(String json, Class<T> clazz) {
         Map<String, T> map = null;
@@ -71,6 +85,9 @@ public class JsonUtil {
 
     /**
      * 格式化json字符串。增加制表符和回车，用于json字符串的打印
+     *
+     * @param obj java对象
+     * @return 格式化的字符串，带回车
      */
     public static String formatJson(Object obj) {
         String json = JsonUtil.toStr(obj);
@@ -79,12 +96,15 @@ public class JsonUtil {
 
     /**
      * 格式化json字符串。增加制表符和回车，用于json字符串的打印
+     *
+     * @param json json字符串
+     * @return 格式化的字符串，带回车
      */
     public static String formatJson(String json) {
         if (null == json || "".equals(json)) {
             return "";
         }
-        StringBuilder sb = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         char last = '\0';
         char current = '\0';
         int indent = 0;
@@ -97,46 +117,49 @@ public class JsonUtil {
                     if (last != '\\') {
                         isInQuotationMarks = !isInQuotationMarks;
                     }
-                    sb.append(current);
+                    builder.append(current);
                     break;
                 case '{':
                 case '[':
-                    sb.append(current);
+                    builder.append(current);
                     if (!isInQuotationMarks) {
-                        sb.append('\n');
+                        builder.append('\n');
                         indent++;
-                        addIndentBlank(sb, indent);
+                        addIndentBlank(builder, indent);
                     }
                     break;
                 case '}':
                 case ']':
                     if (!isInQuotationMarks) {
-                        sb.append('\n');
+                        builder.append('\n');
                         indent--;
-                        addIndentBlank(sb, indent);
+                        addIndentBlank(builder, indent);
                     }
-                    sb.append(current);
+                    builder.append(current);
                     break;
                 case ',':
-                    sb.append(current);
+                    builder.append(current);
                     if (last != '\\' && !isInQuotationMarks) {
-                        sb.append('\n');
-                        addIndentBlank(sb, indent);
+                        builder.append('\n');
+                        addIndentBlank(builder, indent);
                     }
                     break;
                 default:
-                    sb.append(current);
+                    builder.append(current);
             }
         }
-        return sb.toString();
+        return builder.toString();
     }
 
     /**
      * formatJson用到的私有方法：添加制表符
+     *
+     * @param builder 要拼接的字符串
+     * @param indent  缩进长度
      */
-    private static void addIndentBlank(StringBuilder sb, int indent) {
+    private static void addIndentBlank(StringBuilder builder, int indent) {
         for (int i = 0; i < indent; i++) {
-            sb.append('\t');
+            builder.append('\t');
         }
     }
 }
