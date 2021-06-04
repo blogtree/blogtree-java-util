@@ -10,6 +10,8 @@ import java.util.Map;
 
 /**
  * JSON字符串的工具类
+ *
+ * @author AlanGeeker
  */
 public class JsonUtil {
 
