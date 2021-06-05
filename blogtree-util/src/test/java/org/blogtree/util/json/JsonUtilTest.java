@@ -69,7 +69,7 @@ public class JsonUtilTest extends BaseTest {
     public void toMapWithClass() {
         // create map
         Map<Long, User> map = new HashMap<>();
-        map.put(1001L, (new User(1001L, "Ada", 18)));
+        map.put(1001L, new User(1001L, "Ada", 18));
         map.put(1002L, new User(1002L, "Leon", 20));
 
         // get json

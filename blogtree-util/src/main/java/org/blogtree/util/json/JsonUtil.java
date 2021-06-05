@@ -77,9 +77,11 @@ public class JsonUtil {
         if (jsonObject == null || jsonObject.size() == 0) {
             map = new HashMap<>();
         } else {
-            map = new HashMap<>(jsonObject.size());
+            map = new HashMap<>(jsonObject.size() * 2);
             for (Map.Entry<String, Object> entry : jsonObject.entrySet()) {
-                map.put(entry.getKey(), (T) entry.getValue());
+                String value = JsonUtil.toStr(entry.getValue());
+                T t = JSON.parseObject(value, clazz);
+                map.put(entry.getKey(), t);
             }
         }
         return map;

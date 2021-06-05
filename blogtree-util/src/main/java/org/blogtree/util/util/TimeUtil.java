@@ -77,6 +77,9 @@ public class TimeUtil {
 
     /**
      * Date转换为String
+     *
+     * @param date Date型日期
+     * @return String型日期
      */
     public static String toStr(Date date) {
         return TimeUtil.toStr(date, TimeUtil.FORMAT_DATE_TIME);
@@ -84,6 +87,10 @@ public class TimeUtil {
 
     /**
      * Date转换为String
+     *
+     * @param date   Date型日期
+     * @param format 自定义的DateFormat。例如：yyyy-MM-dd HH:mm
+     * @return String型日期
      */
     public static String toStr(Date date, String format) {
         if (date == null) {
@@ -96,6 +103,10 @@ public class TimeUtil {
 
     /**
      * String转换为Date
+     *
+     * @param dateStr String型日期
+     * @param format  自定义的DateFormat。例如：yyyy-MM-dd HH:mm
+     * @return Date型日期
      */
     public static Date toDate(String dateStr, String format) {
         if (dateStr != null && dateStr.trim().length() > 0) {
@@ -112,30 +123,44 @@ public class TimeUtil {
     /**
      * 在入参的时间上，增加或减少年
      * 注：如果是减少天数，则传入负值
+     *
+     * @param date 原本的时间
+     * @param year 要增减的年数
+     * @return 增减后的时间
      */
     public static Date addYear(Date date, int year) {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         calendar.setTime(date);
-        calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + year); //加减年
+        // 加减年
+        calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + year);
         return calendar.getTime();
     }
 
     /**
      * 在入参的时间上，增加或减少月
      * 注：如果是减少天数，则传入负值
+     *
+     * @param date 原本的时间
+     * @param month 要增减的月数
+     * @return 增减后的时间
      */
     public static Date addMonth(Date date, int month) {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         calendar.setTime(date);
-        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + month); //加减月
+        // 加减月
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + month);
         return calendar.getTime();
     }
 
     /**
      * 在入参的时间上，增加或减少天数
      * 注：如果是减少天数，则传入负值
+     *
+     * @param date 原本的时间
+     * @param day 要增减的天数
+     * @return 增减后的时间
      */
     public static Date addDay(Date date, int day) {
         return new Date(date.getTime() + MS_ONE_DAY * day);
@@ -144,6 +169,10 @@ public class TimeUtil {
     /**
      * 在入参的时间上，增加或减少小时
      * 注：如果是减少小时，则传入负值
+     *
+     * @param date 原本的时间
+     * @param hour 要增减的小时数
+     * @return 增减后的时间
      */
     public static Date addHour(Date date, int hour) {
         return new Date(date.getTime() + MS_ONE_HOUR * hour);
@@ -152,6 +181,10 @@ public class TimeUtil {
     /**
      * 在入参的时间上，增加或减少分钟
      * 注：如果是减少分钟，则传入负值
+     *
+     * @param date 原本的时间
+     * @param minute 要增减的分钟数
+     * @return 增减后的时间
      */
     public static Date addMinute(Date date, int minute) {
         return new Date(date.getTime() + MS_ONE_MINUTE * minute);
@@ -159,7 +192,10 @@ public class TimeUtil {
 
     /**
      * 获取以秒为单位的时间戳
-     * 注：毫秒是向下取整
+     * 注意：毫秒是向下取整
+     *
+     * @param date Date型日期
+     * @return 入参对于的秒时间戳
      */
     public static int getSecondTimestamp(Date date) {
         if (null == date) {
@@ -171,6 +207,9 @@ public class TimeUtil {
 
     /**
      * 获取某日凌晨时间
+     *
+     * @param date Date型日期
+     * @return 入参时间对应的凌晨，Date型
      */
     public static Date getWeeHours(Date date) {
         Calendar c = Calendar.getInstance();
