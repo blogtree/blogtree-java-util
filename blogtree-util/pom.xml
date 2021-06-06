@@ -6,7 +6,7 @@
 
     <groupId>org.blogtree</groupId>
     <artifactId>blogtree-util</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
     <properties>
         <java.version>1.8</java.version>
@@ -14,7 +14,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <lombok.version>1.18.20</lombok.version>
         <fastjson.version>1.2.76</fastjson.version>
+        <cglib.version>3.3.0</cglib.version>
+        <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
     <dependencies>
@@ -22,7 +25,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>${lombok.version}</version>
             <!-- 注意：lombok需要设置scope为provided，这样被其他项目依赖后，不需要强制引入lombok -->
             <scope>provided</scope>
         </dependency>
@@ -34,16 +37,23 @@
             <version>${fastjson.version}</version>
         </dependency>
 
+        <!-- cglib for BeanCopierUtil -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
+
         <!-- slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.30</version>
+            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -95,12 +105,12 @@
         </repository>
 
         <!--<repository>-->
-            <!--<id>ossrh</id>&lt;!&ndash;与settings.xml的server.id保持一致&ndash;&gt;-->
-            <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
+        <!--<id>ossrh</id>&lt;!&ndash;与settings.xml的server.id保持一致&ndash;&gt;-->
+        <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
         <!--</repository>-->
         <!--<snapshotRepository>-->
-            <!--<id>ossrh</id>&lt;!&ndash;与settings.xml的server.id保持一致&ndash;&gt;-->
-            <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+        <!--<id>ossrh</id>&lt;!&ndash;与settings.xml的server.id保持一致&ndash;&gt;-->
+        <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
         <!--</snapshotRepository>-->
     </distributionManagement>
 

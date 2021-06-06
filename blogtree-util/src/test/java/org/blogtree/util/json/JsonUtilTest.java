@@ -1,11 +1,9 @@
 package org.blogtree.util.json;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.blogtree.util.base.BaseTest;
+import org.blogtree.util.vo.UserPo;
 import org.junit.Test;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,8 +14,8 @@ public class JsonUtilTest extends BaseTest {
 
     @Test
     public void toStr() {
-        User student = new User(1L, "Michael", 20);
-        String result = JsonUtil.toStr(student);
+        UserPo user = new UserPo(1L, "Michael", 20);
+        String result = JsonUtil.toStr(user);
         print(result);
     }
 
@@ -26,7 +24,7 @@ public class JsonUtilTest extends BaseTest {
         // set json
         String json = "{\"age\":20,\"id\":1,\"name\":\"Michael\"}";
         // get class
-        User result = JsonUtil.toObj(json, User.class);
+        UserPo result = JsonUtil.toObj(json, UserPo.class);
         print(result);
         print2Json(result);
     }
@@ -34,16 +32,16 @@ public class JsonUtilTest extends BaseTest {
     @Test
     public void toList() {
         // create list
-        List<User> list = new ArrayList<>();
-        list.add(new User(1001L, "Ada", 18));
-        list.add(new User(1002L, "Leon", 20));
+        List<UserPo> list = new ArrayList<>();
+        list.add(new UserPo(1001L, "Ada", 18));
+        list.add(new UserPo(1002L, "Leon", 20));
 
         // get json
         String json = JsonUtil.toStr(list);
         print(json);
 
         // get new list
-        List<User> newList = JsonUtil.toList(json, User.class);
+        List<UserPo> newList = JsonUtil.toList(json, UserPo.class);
         print(newList);
         print2Json(newList);
     }
@@ -68,16 +66,16 @@ public class JsonUtilTest extends BaseTest {
     @Test
     public void toMapWithClass() {
         // create map
-        Map<Long, User> map = new HashMap<>();
-        map.put(1001L, new User(1001L, "Ada", 18));
-        map.put(1002L, new User(1002L, "Leon", 20));
+        Map<Long, UserPo> map = new HashMap<>();
+        map.put(1001L, new UserPo(1001L, "Ada", 18));
+        map.put(1002L, new UserPo(1002L, "Leon", 20));
 
         // get json
         String json = JsonUtil.toStr(map);
         print(json);
 
         // get new map
-        Map<String, User> newMap = JsonUtil.toMap(json, User.class);
+        Map<String, UserPo> newMap = JsonUtil.toMap(json, UserPo.class);
         print(newMap);
         print2Json(newMap);
     }
@@ -85,9 +83,9 @@ public class JsonUtilTest extends BaseTest {
     @Test
     public void formatJson() {
         // create list
-        List<User> list = new ArrayList<>();
-        list.add(new User(1001L, "Ada", 18));
-        list.add(new User(1002L, "Leon", 20));
+        List<UserPo> list = new ArrayList<>();
+        list.add(new UserPo(1001L, "Ada", 18));
+        list.add(new UserPo(1002L, "Leon", 20));
 
         // get json
         String json = JsonUtil.toStr(list);
@@ -97,18 +95,4 @@ public class JsonUtilTest extends BaseTest {
         String formatJson = JsonUtil.formatJson(list);
         print(formatJson);
     }
-
-    @Data
-    @AllArgsConstructor
-    public class User implements Serializable {
-
-        private static final long serialVersionUID = 3042633748297505811L;
-
-        private Long id;
-
-        private String name;
-
-        private Integer age;
-    }
-
 }
