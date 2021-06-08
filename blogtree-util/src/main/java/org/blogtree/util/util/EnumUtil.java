@@ -1,6 +1,6 @@
 package org.blogtree.util.util;
 
-import org.blogtree.util.base.BaseEnum;
+import org.blogtree.util.api.base.BaseEnum;
 
 /**
  * 枚举工具类，需要和BaseEnum配合使用

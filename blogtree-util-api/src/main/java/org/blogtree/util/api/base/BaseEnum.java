@@ -1,6 +1,4 @@
-package org.blogtree.util.base;
-
-import org.blogtree.util.util.EnumUtil;
+package org.blogtree.util.api.base;
 
 /**
  * 枚举类接口

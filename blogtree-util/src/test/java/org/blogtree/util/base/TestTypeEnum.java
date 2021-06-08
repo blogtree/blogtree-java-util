@@ -1,6 +1,7 @@
 package org.blogtree.util.base;
 
 import lombok.Getter;
+import org.blogtree.util.api.base.BaseEnum;
 
 @Getter
 public enum TestTypeEnum implements BaseEnum<TestTypeEnum> {
