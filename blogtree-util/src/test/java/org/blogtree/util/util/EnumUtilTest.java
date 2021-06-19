@@ -1,5 +1,6 @@
 package org.blogtree.util.util;
 
+import org.blogtree.util.api.util.EnumUtil;
 import org.blogtree.util.base.BaseTest;
 import org.blogtree.util.base.TestTypeEnum;
 import org.junit.Test;

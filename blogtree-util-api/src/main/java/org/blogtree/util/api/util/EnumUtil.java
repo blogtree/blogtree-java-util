@@ -1,4 +1,4 @@
-package org.blogtree.util.util;
+package org.blogtree.util.api.util;
 
 import org.blogtree.util.api.base.BaseEnum;
 

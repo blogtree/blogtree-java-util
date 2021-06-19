@@ -7,12 +7,10 @@
     <parent>
         <groupId>org.blogtree</groupId>
         <artifactId>blogtree-util-parent</artifactId>
-        <version>0.0.5</version>
+        <version>0.0.6-SNAPSHOT</version>
     </parent>
 
     <artifactId>blogtree-util-api</artifactId>
-    <version>0.0.5</version>
-
-
+    <version>0.0.6-SNAPSHOT</version>
 
 </project>
