@@ -1,4 +1,4 @@
-package org.blogtree.util.util;
+package org.blogtree.util.common;
 
 import org.blogtree.util.base.BaseTest;
 import org.junit.Test;

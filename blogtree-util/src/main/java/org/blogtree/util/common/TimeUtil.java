@@ -1,4 +1,4 @@
-package org.blogtree.util.util;
+package org.blogtree.util.common;
 
 import lombok.extern.slf4j.Slf4j;
 

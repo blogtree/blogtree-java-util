@@ -28,6 +28,7 @@
     </properties>
 
     <dependencies>
+
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -36,6 +37,21 @@
             <!-- 注意：lombok需要设置scope为provided，这样被其他项目依赖后，不需要强制引入lombok -->
             <scope>provided</scope>
         </dependency>
+
+        <!-- slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- junit 4 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
