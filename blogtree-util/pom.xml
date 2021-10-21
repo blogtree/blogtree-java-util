@@ -7,11 +7,11 @@
     <parent>
         <groupId>org.blogtree</groupId>
         <artifactId>blogtree-util-parent</artifactId>
-        <version>0.0.6-SNAPSHOT</version>
+        <version>0.0.7-SNAPSHOT</version>
     </parent>
 
     <artifactId>blogtree-util</artifactId>
-    <version>0.0.6-SNAPSHOT</version>
+    <version>0.0.7-SNAPSHOT</version>
 
     <dependencies>
         <!-- blogtree-util-api -->
