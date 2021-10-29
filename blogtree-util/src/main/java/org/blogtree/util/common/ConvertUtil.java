@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 /**
  * 类型转换的工具类
+ *
+ * @author AlanGeeker
  */
 public class ConvertUtil {
 

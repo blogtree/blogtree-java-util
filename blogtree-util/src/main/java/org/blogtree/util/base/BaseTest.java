@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 测试类的父类，可以提供log、print、print2Json等基础方法
+ *
+ * @author AlanGeeker
  */
 public class BaseTest {
 

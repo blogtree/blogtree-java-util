@@ -5,6 +5,8 @@ import java.util.function.BiConsumer;
 
 /**
  * Iterable 的工具类
+ *
+ * @author AlanGeeker
  */
 public class IterableUtil {
 

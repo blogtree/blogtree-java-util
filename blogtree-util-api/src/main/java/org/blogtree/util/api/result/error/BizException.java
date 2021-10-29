@@ -5,6 +5,8 @@ import lombok.ToString;
 
 /**
  * 业务异常类
+ *
+ * @author AlanGeeker
  */
 @Getter
 @ToString

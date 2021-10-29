@@ -11,6 +11,8 @@ import java.io.Serializable;
 
 /**
  * 业务层 公用的返回值
+ *
+ * @author AlanGeeker
  */
 @Getter
 @Setter

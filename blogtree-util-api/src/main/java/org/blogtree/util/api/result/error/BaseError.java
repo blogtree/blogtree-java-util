@@ -4,6 +4,8 @@ import java.text.MessageFormat;
 
 /**
  * 通用的ErrorCode枚举接口，定义code和msg方法
+ *
+ * @author AlanGeeker
  */
 public interface BaseError {
 

@@ -2,6 +2,8 @@ package org.blogtree.util.api.base;
 
 /**
  * 枚举类接口
+ *
+ * @author AlanGeeker
  */
 public interface BaseEnum<T extends BaseEnum> {
 

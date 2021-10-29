@@ -5,6 +5,11 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 分页查询返回的对象
+ *
+ * @author AlanGeeker
+ */
 @Getter
 @Setter
 @ToString
