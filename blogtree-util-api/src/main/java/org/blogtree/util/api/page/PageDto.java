@@ -3,6 +3,7 @@ package org.blogtree.util.api.page;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -14,7 +15,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class BasePageDto implements Serializable {
+@Accessors(chain = true)
+public class PageDto implements Serializable {
 
     private static final long serialVersionUID = 4862304094187475990L;
 
