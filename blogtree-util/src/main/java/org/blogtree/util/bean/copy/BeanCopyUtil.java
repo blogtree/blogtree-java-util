@@ -1,4 +1,4 @@
-package org.blogtree.util.common;
+package org.blogtree.util.bean.copy;
 
 import net.sf.cglib.beans.BeanCopier;
 import org.slf4j.Logger;
