@@ -15,6 +15,7 @@ import java.util.Map;
  *
  * @author AlanGeeker
  */
+@Deprecated
 public class BeanCopyUtil {
 
     private static Logger log = LoggerFactory.getLogger(BeanCopyUtil.class);

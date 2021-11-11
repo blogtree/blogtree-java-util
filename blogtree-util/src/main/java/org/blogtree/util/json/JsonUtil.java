@@ -13,6 +13,7 @@ import java.util.Map;
  *
  * @author AlanGeeker
  */
+@Deprecated
 public class JsonUtil {
 
     /**
