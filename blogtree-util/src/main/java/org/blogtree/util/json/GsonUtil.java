@@ -1,28 +1,31 @@
 package org.blogtree.util.json;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.SneakyThrows;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.blogtree.util.json.common.FormatJsonUtil;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 基于 Jackson 的 JSON工具类
  * <p>
  * 优点：
  * 1. obj to string 是按照字母顺序输出的。通常对象的属性顺序，有一定含义。
- * 2. Spring 默认集成
  * <p>
  * 缺点：
  * 1. 速度相比 fastjson慢一点
  *
  * @author AlanGeeker
- * @see <a href="https://github.com/FasterXML/jackson">Jackson - GitHub</a>
+ * @see <a href="https://github.com/google/gson">gson - GitHub</a>
+ * @see <a href="https://github.com/google/gson/blob/master/UserGuide.md">gson - UserGuide - GitHub</a>
  */
-public class JacksonUtil {
+public class GsonUtil {
 
-    private final static ObjectMapper mapper = new ObjectMapper();
+    private final static Gson gson = new Gson();
+    ;
 
     /**
      * 将任意对象转换为String类型
@@ -30,9 +33,8 @@ public class JacksonUtil {
      * @param obj java对象
      * @return json字符串
      */
-    @SneakyThrows
     public static String toStr(Object obj) {
-        return mapper.writeValueAsString(obj);
+        return gson.toJson(obj);
     }
 
     /**
@@ -45,15 +47,14 @@ public class JacksonUtil {
      * @param <T>   要转换的java类
      * @return 要转换的java对象
      */
-    @SneakyThrows
     public static <T> T toObj(String json, Class<T> clazz) {
-        return mapper.readValue(json, clazz);
+        return gson.fromJson(json, clazz);
     }
 
     /**
      * 将字符串转换为列表。
      * <p>
-     * 注意：此方法中的范型T，并没有传递过去。方法会返回 List<LinkedHashMap>
+     * 注意：此方法中的范型T，并没有传递过去。方法会返回 List<LinkedTreeMap>
      * <p>
      * 原生方案：
      * List<UserPo> newList = mapper.readValue(json, new TypeReference<List<UserPo>>() {});
@@ -63,11 +64,10 @@ public class JacksonUtil {
      * @param <T>   要转换的java类
      * @return 要转换的java对象列表
      */
-    @SneakyThrows
     @Deprecated
     public static <T> List<T> toList(String json, Class<T> clazz) {
-        List<T> list = mapper.readValue(json, new TypeReference<List<T>>() {
-        });
+        List<T> list = gson.fromJson(json, new TypeToken<List<T>>() {
+        }.getType());
         if (list == null || list.size() == 0) {
             return list;
         }
@@ -80,15 +80,19 @@ public class JacksonUtil {
 
     /**
      * 将字符串转换为 map
+     * <p>
+     * 注意：此方法中的范型T，并没有传递过去。方法会返回 Map<String, LinkedTreeMap>
+     * <p>
+     * 原生方案：
+     * List<UserPo> ps = gson.fromJson(str, new TypeToken<Map<String, Object>>(){}.getType());
      *
      * @param json json字符串
      * @return Map<String, Object>
      */
-    @SneakyThrows
     @Deprecated
     public static Map<String, Object> toMap(String json) {
-        return  mapper.readValue(json, new TypeReference<Map<String, Object>>() {
-        });
+        return gson.fromJson(json, new TypeToken<Map<String, Object>>() {
+        }.getType());
     }
 
     /**
@@ -99,11 +103,10 @@ public class JacksonUtil {
      * @param <T>   要转换的java类
      * @return map
      */
-    @SneakyThrows
     @Deprecated
     public static <T> Map<String, T> toMap(String json, Class<T> clazz) {
-        Map<String, T> map = mapper.readValue(json, new TypeReference<Map<String, T>>() {
-        });
+        Map<String, T> map = gson.fromJson(json, new TypeToken<Map<String, T>>() {
+        }.getType());
         if (map == null || map.size() == 0) {
             return map;
         }
@@ -122,7 +125,7 @@ public class JacksonUtil {
      * @return 格式化的字符串，带回车
      */
     public static String formatJson(Object obj) {
-        String json = JacksonUtil.toStr(obj);
+        String json = GsonUtil.toStr(obj);
         return FormatJsonUtil.formatJson(json);
     }
 
