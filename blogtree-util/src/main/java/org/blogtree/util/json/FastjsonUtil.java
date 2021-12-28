@@ -3,18 +3,28 @@ package org.blogtree.util.json;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.blogtree.util.json.common.FormatJsonUtil;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * JSON字符串的工具类
+ * 基于 FastJson 的 JSON工具类
+ * <p>
+ * 备注：
+ * 1. 如果不希望使用 FastJson，可以使用 JacksonUtil。
+ * <p>
+ * 优点：
+ * 1. 速度较快
+ * <p>
+ * 缺点：
+ * 1. obj to string 是按照字母顺序输出的。通常对象的属性顺序，有一定含义。
  *
  * @author AlanGeeker
+ * @see <a href="https://github.com/alibaba/fastjson">FastJson - GitHub</a>
  */
-@Deprecated
-public class JsonUtil {
+public class FastjsonUtil {
 
     /**
      * 将任意对象转换为String类型
@@ -25,7 +35,7 @@ public class JsonUtil {
     public static String toStr(Object obj) {
         // toJSONString的时候，默认如果重用对象的话，会使用引用的方式进行引用对象
         // SerializerFeature.DisableCircularReferenceDetect 表示 禁用
-        return JSON.toJSONString(obj, SerializerFeature.DisableCircularReferenceDetect);
+        return JSON.toJSONString(obj, SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.MapSortField);
     }
 
     /**
@@ -80,7 +90,7 @@ public class JsonUtil {
         } else {
             map = new HashMap<>(jsonObject.size() * 2);
             for (Map.Entry<String, Object> entry : jsonObject.entrySet()) {
-                String value = JsonUtil.toStr(entry.getValue());
+                String value = FastjsonUtil.toStr(entry.getValue());
                 T t = JSON.parseObject(value, clazz);
                 map.put(entry.getKey(), t);
             }
@@ -95,8 +105,8 @@ public class JsonUtil {
      * @return 格式化的字符串，带回车
      */
     public static String formatJson(Object obj) {
-        String json = JsonUtil.toStr(obj);
-        return JsonUtil.formatJson(json);
+        String json = FastjsonUtil.toStr(obj);
+        return FormatJsonUtil.formatJson(json);
     }
 
     /**
@@ -106,65 +116,8 @@ public class JsonUtil {
      * @return 格式化的字符串，带回车
      */
     public static String formatJson(String json) {
-        if (null == json || "".equals(json)) {
-            return "";
-        }
-        StringBuilder builder = new StringBuilder();
-        char last = '\0';
-        char current = '\0';
-        int indent = 0;
-        boolean isInQuotationMarks = false;
-        for (int i = 0; i < json.length(); i++) {
-            last = current;
-            current = json.charAt(i);
-            switch (current) {
-                case '"':
-                    if (last != '\\') {
-                        isInQuotationMarks = !isInQuotationMarks;
-                    }
-                    builder.append(current);
-                    break;
-                case '{':
-                case '[':
-                    builder.append(current);
-                    if (!isInQuotationMarks) {
-                        builder.append('\n');
-                        indent++;
-                        addIndentBlank(builder, indent);
-                    }
-                    break;
-                case '}':
-                case ']':
-                    if (!isInQuotationMarks) {
-                        builder.append('\n');
-                        indent--;
-                        addIndentBlank(builder, indent);
-                    }
-                    builder.append(current);
-                    break;
-                case ',':
-                    builder.append(current);
-                    if (last != '\\' && !isInQuotationMarks) {
-                        builder.append('\n');
-                        addIndentBlank(builder, indent);
-                    }
-                    break;
-                default:
-                    builder.append(current);
-            }
-        }
-        return builder.toString();
+        return FormatJsonUtil.formatJson(json);
     }
 
-    /**
-     * formatJson用到的私有方法：添加制表符
-     *
-     * @param builder 要拼接的字符串
-     * @param indent  缩进长度
-     */
-    private static void addIndentBlank(StringBuilder builder, int indent) {
-        for (int i = 0; i < indent; i++) {
-            builder.append('\t');
-        }
-    }
+
 }
