@@ -1,8 +1,7 @@
 package org.blogtree.util.bean.copy;
 
+import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.beans.BeanCopier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -15,15 +14,17 @@ import java.util.Map;
  * <p>
  * 注意：
  * 1. BeanCopier是基于 public void setXXX() 方法来赋值的，
- *    当遇到目标对象有lombok的注释 @Accessors(chain = true)时，会赋值失效，
- *    这种情况，建议改用 BeanUtils.copyProperties 。
+ * ___当遇到目标对象有lombok的注释 @Accessors(chain = true)时，会赋值失效，
+ * ___这种情况，建议改用 BeanUtils.copyProperties。
  *
  * @author AlanGeeker
- * @see <a href="https://blog.csdn.net/u011195313/article/details/112555290">解决加了Lombok的@Accessors(chain=true)后无法使用cglib的beanCopier拷贝复制bean的问题</a>
+ * @see <a href="https://github.com/cglib/cglib">cglib - GitHub</a>
+ * @see <a href="https://github.com/cglib/cglib/wiki">cglib - wiki - GitHub</a>
+ * @see <a href="https://blog.csdn.net/u011195313/article/details/112555290">
+ * _____解决加了Lombok的@Accessors(chain=true)后无法使用cglib的beanCopier拷贝复制bean的问题</a>
  */
+@Slf4j
 public class BeanCopierUtil {
-
-    private static Logger log = LoggerFactory.getLogger(BeanCopierUtil.class);
 
     /**
      * 存储BeanCopier的Map

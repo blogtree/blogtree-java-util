@@ -1,4 +1,4 @@
-package org.blogtree.util.bean.reflect.copy;
+package org.blogtree.util.bean.reflect;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
