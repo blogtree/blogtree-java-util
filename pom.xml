@@ -22,8 +22,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <lombok.version>1.18.20</lombok.version>
-        <fastjson.version>1.2.76</fastjson.version>
-        <cglib.version>3.3.0</cglib.version>
         <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
@@ -61,20 +59,6 @@
                 <groupId>org.blogtree</groupId>
                 <artifactId>blogtree-util-api</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-
-            <!-- fastjson -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-
-            <!-- cglib for BeanCopierUtil -->
-            <dependency>
-                <groupId>cglib</groupId>
-                <artifactId>cglib-nodep</artifactId>
-                <version>${cglib.version}</version>
             </dependency>
 
             <!-- slf4j -->

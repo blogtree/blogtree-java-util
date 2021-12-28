@@ -1,6 +1,6 @@
 package org.blogtree.util.base;
 
-import org.blogtree.util.json.JsonUtil;
+import org.blogtree.util.json.JacksonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +18,6 @@ public class BaseTest {
     }
 
     protected void print2Json(Object obj) {
-        log.info("obj={}", JsonUtil.formatJson(obj));
+        log.info("obj={}", JacksonUtil.formatJson(obj));
     }
 }

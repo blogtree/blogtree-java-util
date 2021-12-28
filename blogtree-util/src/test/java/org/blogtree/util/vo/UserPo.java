@@ -1,16 +1,12 @@
 package org.blogtree.util.vo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
 
 @Data
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserPo implements Serializable {
 
     private static final long serialVersionUID = -663783266614202953L;
@@ -21,4 +17,12 @@ public class UserPo implements Serializable {
 
     private Integer age;
 
+    public UserPo() {
+    }
+
+    public UserPo(Long id, String name, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
 }
