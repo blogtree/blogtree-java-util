@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 基于 Jackson 的 JSON工具类
+ * 基于 Gson 的 JSON工具类
  * <p>
  * 优点：
  * 1. obj to string 是按照字母顺序输出的。通常对象的属性顺序，有一定含义。

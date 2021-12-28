@@ -11,14 +11,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 类拷贝
+ * 基于 BeanCopier 的类拷贝
+ * <p>
+ * 注意：
+ * 1. BeanCopier是基于 public void setXXX() 方法来赋值的，
+ *    当遇到目标对象有lombok的注释 @Accessors(chain = true)时，会赋值失效，
+ *    这种情况，建议改用 BeanUtils.copyProperties 。
  *
  * @author AlanGeeker
+ * @see <a href="https://blog.csdn.net/u011195313/article/details/112555290">解决加了Lombok的@Accessors(chain=true)后无法使用cglib的beanCopier拷贝复制bean的问题</a>
  */
-@Deprecated
-public class BeanCopyUtil {
+public class BeanCopierUtil {
 
-    private static Logger log = LoggerFactory.getLogger(BeanCopyUtil.class);
+    private static Logger log = LoggerFactory.getLogger(BeanCopierUtil.class);
 
     /**
      * 存储BeanCopier的Map
@@ -34,7 +39,7 @@ public class BeanCopyUtil {
      * @return 目标对象
      */
     public static <E> E copy(Object source, Class<E> targetClass) {
-        return BeanCopyUtil.copy(source, null, targetClass);
+        return BeanCopierUtil.copy(source, null, targetClass);
     }
 
     /**
@@ -45,7 +50,7 @@ public class BeanCopyUtil {
      * @param <E>    目标对象类型
      */
     public static <E> void copy(Object source, E target) {
-        BeanCopyUtil.copy(source, target, null);
+        BeanCopierUtil.copy(source, target, null);
     }
 
     /**
@@ -62,7 +67,7 @@ public class BeanCopyUtil {
         } else {
             List<E> targets = new ArrayList<E>(sources.size());
             for (Object source : sources) {
-                E target = BeanCopyUtil.copy(source, null, targetClass);
+                E target = BeanCopierUtil.copy(source, null, targetClass);
                 targets.add(target);
             }
             return targets;
