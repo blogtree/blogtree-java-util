@@ -132,4 +132,13 @@ public class TimeUtilTest extends BaseTest {
         print(weeHours);
         print(TimeUtil.toStr(weeHours));
     }
+
+    @Test
+    public void isLeapYear() {
+        assert !TimeUtil.isLeapYear(1900);
+        assert TimeUtil.isLeapYear(2000);
+        assert !TimeUtil.isLeapYear(2001);
+        assert TimeUtil.isLeapYear(2004);
+        assert TimeUtil.isLeapYear(2008);
+    }
 }

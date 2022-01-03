@@ -40,6 +40,9 @@ public class StringUtil {
         return count;
     }
 
+    /**
+     * 字符串首字母大写
+     */
     public static String upperCaseFirstLetter(String s) {
         if (s == null || s.length() == 0) {
             return s;
