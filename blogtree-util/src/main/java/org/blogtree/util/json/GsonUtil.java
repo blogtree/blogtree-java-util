@@ -2,7 +2,6 @@ package org.blogtree.util.json;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.blogtree.util.json.common.FormatJsonUtil;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -126,7 +125,7 @@ public class GsonUtil {
      */
     public static String formatJson(Object obj) {
         String json = GsonUtil.toStr(obj);
-        return FormatJsonUtil.formatJson(json);
+        return CommonJsonUtil.formatJson(json);
     }
 
     /**
@@ -136,7 +135,7 @@ public class GsonUtil {
      * @return 格式化的字符串，带回车
      */
     public static String formatJson(String json) {
-        return FormatJsonUtil.formatJson(json);
+        return CommonJsonUtil.formatJson(json);
     }
 
 }

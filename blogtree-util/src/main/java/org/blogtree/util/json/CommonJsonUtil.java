@@ -1,9 +1,9 @@
-package org.blogtree.util.json.common;
+package org.blogtree.util.json;
 
 /**
  * 格式化JSON工具
  */
-public class FormatJsonUtil {
+class CommonJsonUtil {
     /**
      * 格式化json字符串。增加制表符和回车，用于json字符串的打印
      *

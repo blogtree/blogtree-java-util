@@ -3,7 +3,6 @@ package org.blogtree.util.json;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import org.blogtree.util.json.common.FormatJsonUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -106,7 +105,7 @@ public class FastjsonUtil {
      */
     public static String formatJson(Object obj) {
         String json = FastjsonUtil.toStr(obj);
-        return FormatJsonUtil.formatJson(json);
+        return CommonJsonUtil.formatJson(json);
     }
 
     /**
@@ -116,7 +115,7 @@ public class FastjsonUtil {
      * @return 格式化的字符串，带回车
      */
     public static String formatJson(String json) {
-        return FormatJsonUtil.formatJson(json);
+        return CommonJsonUtil.formatJson(json);
     }
 
 

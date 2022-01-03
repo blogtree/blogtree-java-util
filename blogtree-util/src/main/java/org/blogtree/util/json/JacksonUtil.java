@@ -3,9 +3,11 @@ package org.blogtree.util.json;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
-import org.blogtree.util.json.common.FormatJsonUtil;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 基于 Jackson 的 JSON工具类
@@ -123,7 +125,7 @@ public class JacksonUtil {
      */
     public static String formatJson(Object obj) {
         String json = JacksonUtil.toStr(obj);
-        return FormatJsonUtil.formatJson(json);
+        return CommonJsonUtil.formatJson(json);
     }
 
     /**
@@ -133,7 +135,7 @@ public class JacksonUtil {
      * @return 格式化的字符串，带回车
      */
     public static String formatJson(String json) {
-        return FormatJsonUtil.formatJson(json);
+        return CommonJsonUtil.formatJson(json);
     }
 
 }
