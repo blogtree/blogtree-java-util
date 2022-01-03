@@ -12,5 +12,6 @@
 
     <artifactId>blogtree-util-api</artifactId>
     <version>0.0.7-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
 </project>

@@ -13,7 +13,7 @@ import java.util.Map;
  * 基于 FastJson 的 JSON工具类
  * <p>
  * 备注：
- * 1. 如果不希望使用 FastJson，可以使用 JacksonUtil。
+ * 1. 如果不希望使用 FastJson，可以使用 JacksonUtil 或者 GsonUtil
  * <p>
  * 优点：
  * 1. 速度较快

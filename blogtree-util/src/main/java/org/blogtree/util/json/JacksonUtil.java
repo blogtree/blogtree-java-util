@@ -87,7 +87,7 @@ public class JacksonUtil {
     @SneakyThrows
     @Deprecated
     public static Map<String, Object> toMap(String json) {
-        return  mapper.readValue(json, new TypeReference<Map<String, Object>>() {
+        return mapper.readValue(json, new TypeReference<Map<String, Object>>() {
         });
     }
 

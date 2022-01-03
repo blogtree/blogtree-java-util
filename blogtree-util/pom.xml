@@ -12,6 +12,7 @@
 
     <artifactId>blogtree-util</artifactId>
     <version>0.0.7-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <fastjson.version>1.2.79</fastjson.version>
