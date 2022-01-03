@@ -17,4 +17,10 @@ public class StringUtilTest {
         assert 2 == StringUtil.getCharCount("abcxxdef".toCharArray(), 'x');
     }
 
+    @Test
+    public void upperCaseFirstLetter() {
+        assert "".equals(StringUtil.upperCaseFirstLetter(""));
+        assert "Blogtree".equals(StringUtil.upperCaseFirstLetter("blogtree"));
+        assert "BlogTree".equals(StringUtil.upperCaseFirstLetter("BlogTree"));
+    }
 }
