@@ -141,7 +141,7 @@ public class TimeUtil {
      * 在入参的时间上，增加或减少月
      * 注：如果是减少天数，则传入负值
      *
-     * @param date 原本的时间
+     * @param date  原本的时间
      * @param month 要增减的月数
      * @return 增减后的时间
      */
@@ -159,7 +159,7 @@ public class TimeUtil {
      * 注：如果是减少天数，则传入负值
      *
      * @param date 原本的时间
-     * @param day 要增减的天数
+     * @param day  要增减的天数
      * @return 增减后的时间
      */
     public static Date addDay(Date date, int day) {
@@ -182,7 +182,7 @@ public class TimeUtil {
      * 在入参的时间上，增加或减少分钟
      * 注：如果是减少分钟，则传入负值
      *
-     * @param date 原本的时间
+     * @param date   原本的时间
      * @param minute 要增减的分钟数
      * @return 增减后的时间
      */
@@ -219,5 +219,14 @@ public class TimeUtil {
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
         return c.getTime();
+    }
+
+    /**
+     * 是否为闰年。
+     * 条件1：年份 能被4整除，但被100整除的除外。
+     * 条件2：年份 能被400整除。
+     */
+    public static boolean isLeapYear(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
     }
 }
