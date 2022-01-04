@@ -10,7 +10,7 @@ class CommonJsonUtil {
      * @param json json字符串
      * @return 格式化的字符串，带回车
      */
-    public static String formatJson(String json) {
+    protected static String formatJson(String json) {
         if (null == json || "".equals(json)) {
             return "";
         }

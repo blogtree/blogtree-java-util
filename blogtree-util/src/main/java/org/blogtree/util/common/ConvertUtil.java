@@ -14,7 +14,10 @@ public class ConvertUtil {
 
     private static Integer[] EMPTY_ARRAY_INTEGER = new Integer[0];
 
-    public static List toList(int[] arr) {
+    /**
+     * int数组 转为 Integer列表
+     */
+    public static List<Integer> toList(int[] arr) {
         if (arr == null) {
             return Collections.EMPTY_LIST;
         }
@@ -23,7 +26,10 @@ public class ConvertUtil {
                 .collect(Collectors.toList());
     }
 
-    public static List toList(long[] arr) {
+    /**
+     * long数组 转为 Long列表
+     */
+    public static List<Long> toList(long[] arr) {
         if (arr == null) {
             return Collections.EMPTY_LIST;
         }
@@ -32,7 +38,10 @@ public class ConvertUtil {
                 .collect(Collectors.toList());
     }
 
-    public static List toList(String[] arr) {
+    /**
+     * String数组 转为 String列表
+     */
+    public static List<String> toList(String[] arr) {
         if (arr == null) {
             return Collections.EMPTY_LIST;
         }
@@ -40,6 +49,9 @@ public class ConvertUtil {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Integer列表 转为 Integer数组
+     */
     public static Integer[] toArray(List<Integer> list) {
         if (list == null || list.size() == 0) {
             return EMPTY_ARRAY_INTEGER;

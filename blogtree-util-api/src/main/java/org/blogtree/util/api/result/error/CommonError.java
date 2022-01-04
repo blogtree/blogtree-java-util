@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 通用的业务异常枚举。
- * 实际业务系统，可参考此类，自行继承BaseError类。
+ * 通用的业务异常枚举
+ * 实际业务系统，可参考此类，自行继承BaseError类
  *
  * @author AlanGeeker
  */
