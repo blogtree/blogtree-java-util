@@ -1,7 +1,7 @@
 package org.blogtree.util.common;
 
 import org.blogtree.util.base.BaseTest;
-import org.blogtree.util.bean.copy.BeanCopierUtil;
+import org.blogtree.util.bean.BeanCopierUtil;
 import org.blogtree.util.vo.UserPo;
 import org.blogtree.util.vo.UserVo;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package org.blogtree.util.bean.copy;
+package org.blogtree.util.bean;
 
 import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.beans.BeanCopier;
@@ -20,8 +20,7 @@ import java.util.Map;
  * @author AlanGeeker
  * @see <a href="https://github.com/cglib/cglib">cglib - GitHub</a>
  * @see <a href="https://github.com/cglib/cglib/wiki">cglib - wiki - GitHub</a>
- * @see <a href="https://blog.csdn.net/u011195313/article/details/112555290">
- * _____解决加了Lombok的@Accessors(chain=true)后无法使用cglib的beanCopier拷贝复制bean的问题</a>
+ * @see <a href="https://blog.csdn.net/u011195313/article/details/112555290">解决加了Lombok的@Accessors(chain=true)后无法使用cglib的beanCopier拷贝复制bean的问题</a>
  */
 @Slf4j
 public class BeanCopierUtil {
