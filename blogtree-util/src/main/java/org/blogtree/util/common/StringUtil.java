@@ -1,5 +1,8 @@
 package org.blogtree.util.common;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * String工具类
  *
@@ -52,5 +55,22 @@ public class StringUtil {
             chars[0] -= 32;
         }
         return String.valueOf(chars);
+    }
+
+
+    /**
+     * 正则表达式，用于判断字符串是否包含 0-9 的任意数字
+     */
+    private final static Pattern pattern = Pattern.compile(".*\\d+.*");
+
+    /**
+     * 判断字符串是否包含 0-9 的任意数字
+     */
+    public static boolean hasDigit(String str) {
+        if (str == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
     }
 }

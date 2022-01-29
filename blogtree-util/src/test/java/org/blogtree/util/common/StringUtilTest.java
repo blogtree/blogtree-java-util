@@ -23,4 +23,15 @@ public class StringUtilTest {
         assert "Blogtree".equals(StringUtil.upperCaseFirstLetter("blogtree"));
         assert "BlogTree".equals(StringUtil.upperCaseFirstLetter("BlogTree"));
     }
+
+    @Test
+    public void hasDigit() {
+        assert !StringUtil.hasDigit("");
+        assert !StringUtil.hasDigit("abc");
+
+        assert StringUtil.hasDigit("1");
+        assert StringUtil.hasDigit("123");
+        assert StringUtil.hasDigit("abc1");
+        assert StringUtil.hasDigit("a1bc");
+    }
 }
